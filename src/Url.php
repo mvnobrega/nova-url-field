@@ -48,4 +48,16 @@ class Url extends Text
     {
         return $this->withMeta(['clickableOnIndex' => $clickable]);
     }
+
+    /**
+     * Sets a custom placeholder
+     * @param string $newPlaceholder
+     * @return PhoneNumber
+     */
+    public function placeholder(string $newPlaceholder)
+    {
+        return $this->withMeta([
+            'placeholder' => $newPlaceholder
+        ]);
+    }
 }

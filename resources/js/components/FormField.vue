@@ -4,7 +4,7 @@
             <input :id="field.name" type="url"
                 class="w-full form-control form-input form-input-bordered"
                 :class="errorClasses"
-                :placeholder="field.name"
+                :placeholder="placeholder"
                 v-model="value"
             />
 
@@ -22,6 +22,25 @@ export default {
     mixins: [FormField, HandlesValidationErrors],
 
     props: ['resourceName', 'resourceId', 'field'],
+
+    computed: {
+        placeholder() {
+            let placeholder = this.field.placeholder;
+
+            if (placeholder) {
+                return placeholder;
+            }
+
+            return this.field.name
+        },
+        mask() {
+            if (this.field.format) {
+                return this.field.format;
+            }
+
+            return defaultFormat;
+        }
+    },
 
     methods: {
         /*
